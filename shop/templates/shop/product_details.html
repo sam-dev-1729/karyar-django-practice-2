@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}
+    {{ product.name | title }}
+{% endblock title %}
+{% block content %}
+    <h2 class="mb-4">{{ product.name | title }}</h2>
+    <div class="card">
+        <div class="card-body">
+            <img src="https://via.placeholder.com/286x180"
+                 class="img-fluid"
+                 alt="{{ product.name }}">
+            <p class="card-text">Name: {{ product.name }}</p>
+            <p class="card-text">Seller: {{ product.user.username }}</p>
+            <p class="card-text">Price: {{ product.price }}$</p>
+            {% if request.user == product.user %}
+                <form method="post" class="inline-form">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fa-solid fa-trash"></i> Delete
+                    </button>
+                </form>
+                <form method="post" class="inline-form">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-secondary">
+                        <i class="fa-solid fa-pen-to-square"></i> Edit
+                    </button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

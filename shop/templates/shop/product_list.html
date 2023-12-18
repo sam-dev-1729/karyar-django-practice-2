@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}
+    Product
+{% endblock title %}
+{% block content %}
+    <h2 class="mb-4">Product</h2>
+    <div class="alert alert-info" role="alert"></div>
+    {% include "partial/search-bar.html" %}
+    <div class="row mt-4">
+        {% if products %}
+            {% for product in products %}
+                {% include "partial/item.html" with product=product %}
+            {% endfor %}
+            {% include "partial/pagination.html" %}
+        {% else %}
+            <div class="alert alert-warning" role="alert">No product is available at the moment.</div>
+        {% endif %}
+    </div>
+{% endblock content %}

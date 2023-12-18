@@ -1,0 +1,13 @@
+<form method="get" action="{{ request.path }}">
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            {{ form.name.label_tag }}
+            {{ form.name }}
+        </div>
+        <div class="col-md-4 mb-3">
+            {{ form.user.label_tag }}
+            {{ form.user }}
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
